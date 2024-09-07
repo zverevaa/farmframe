@@ -61,6 +61,12 @@ body {
 	align-items: center;
 }
 
+.container__body {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
 /* Items section */
 
 .items-section__container {
