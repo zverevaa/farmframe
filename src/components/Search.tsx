@@ -11,7 +11,7 @@ export default function Search({ searchTerm, setSearchTerm }) {
                 placeholder="SEARCH..."
             />
             <button className="search-form__button button">
-                <MagnifyingGlassIcon />
+                <MagnifyingGlassIcon width={"32"} height={"32"} />
             </button>
         </form>
     );
