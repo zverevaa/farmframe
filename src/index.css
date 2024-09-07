@@ -71,6 +71,14 @@ body {
 	font-weight: 400;
 }
 
+.items-section__icon--flipped {
+	transform: rotateX(180deg);
+}
+
+.items-section__icon:hover {
+	cursor: pointer;
+}
+
 
 .items {
 	display: flex;
