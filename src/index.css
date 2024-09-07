@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #14131d;
+    color: #bea966;
+    font-family: "Noto Sans";
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 1128px;
+	height: 85px;
+	margin: 0 auto;
+	border-bottom: 3px solid #65593B;
+}
+
+.logo {
+	font-size: 48px;
+}
+
+.header__list {
+	font-size: 36px;
+	display: flex;
+	gap: 20px;
+}
+
+.header__item {
+	list-style: none;
+}
+
+.header__link {
+	text-decoration: none;
+}
+
+.header__link:visited {
+    color: #bea966;
+}
+
+.container {
+	width: 1128px;
+	margin: 0 auto;
+
+}
+
+.container__header {
+	height: 100px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+/* Items section */
+
+.items-section__container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 3px solid #65593B;
+	margin-bottom: 30px;
+}
+
+.items-section__title {
+	font-weight: 400;
+}
+
+
+.items {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: start;
+	align-content: start;
+	gap: 1rem;
+}
+
+/* Item */
+
+.item {
+	width: calc(100% / 6 - (1rem * 5 / 6));
+	height: auto;
+	border: 1px solid #BEA966;
+	background: #0E0D17;
+}
+
+.item:hover {
+	cursor: pointer;
+}
+
+.item__container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	overflow: hidden;
+}
+
+.item__container:hover > .item__name{
+	background: linear-gradient(to bottom, rgba(229,229,229,0) 0%,rgba(0,2,10,0.9) 46%);
+	color: #F4E2AC;
+}
+
+.item__container:hover > .item__img {
+	transform: scale(1.15);
+}
+
+.item__img {
+	width: 100%;
+	
+}
+
+.item__name {
+	position: absolute;
+	text-align: center;
+	font-size: 20px;
+	font-weight: 500;
+	width: 100%;
+	height: 30px;
+	bottom: 0px;
+	background: linear-gradient(to bottom, rgba(229,229,229,0) 0%,rgba(0,2,10,0.8) 46%);
+	user-select: none;
+}
