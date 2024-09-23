@@ -1,7 +1,17 @@
-export default function Item({ itemData }) {
-    const { name, imageName } = itemData;
+import { useState } from "react";
+
+export default function Item({ itemData, setSelectedItems, onClick }) {
+    const { name, imageName, isSelected } = itemData;
+
+    const handleClick = () => {
+        itemData.isSelected = !isSelected;
+        onClick();
+    };
     return (
-        <div className="item">
+        <div
+            onClick={handleClick}
+            className={`item ${isSelected ? "item--selected" : ""}`}
+        >
             <div className="item__container">
                 <img
                     className="item__img"

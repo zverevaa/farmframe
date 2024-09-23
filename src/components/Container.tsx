@@ -16,7 +16,7 @@ enum itemCategories {
 // get full data, separate it into diff const
 // put filter stuff inside useEffect so it only runs 1 time
 
-export default function Container() {
+export default function Container({ selectedItems, setSelectedItems }) {
     const [data, setData] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
 
@@ -36,21 +36,28 @@ export default function Container() {
 
     const filterData = (type) => {
         return filteredData.filter(
-            (item) => item.name.includes("Prime") && type.includes(item.type)
+            (item) =>
+                item.name.includes("Prime") &&
+                type.includes(item.type) &&
+                item.components
         );
     };
 
-    const test = data.map((item) => item.type);
-    console.log(test);
+    // const test = data.map((item) => item.type);
+    // console.log(test);
 
     useEffect(() => {
         fetch("https://api.warframestat.us/items/")
             .then((res) => res.json())
             .then((data) => {
-                const filteredData = data.filter((item) =>
+                const changedData = data.filter((item) =>
                     ITEM_CATEGORIES.includes(item.category)
                 );
-                setData(filteredData);
+                const redactedData = changedData.map((item) =>
+                    Object.assign(item, { isSelected: false })
+                );
+                console.log(redactedData);
+                setData(redactedData);
             });
     }, []);
 
@@ -66,6 +73,8 @@ export default function Container() {
                 {ITEM_TYPES.map((type, i) => {
                     return (
                         <ItemsSection
+                            selectedItems={selectedItems}
+                            setSelectedItems={setSelectedItems}
                             title={SECTION_TITLES[i]}
                             itemsType={itemCategories.warframes}
                             data={filterData(type)}

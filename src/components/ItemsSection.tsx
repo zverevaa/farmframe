@@ -2,9 +2,14 @@ import { TriangleDownIcon } from "@radix-ui/react-icons";
 import Items from "./Items";
 import { useState } from "react";
 
-export default function ItemsSection({ data, title }) {
+export default function ItemsSection({
+    data,
+    title,
+    selectedItems,
+    setSelectedItems,
+}) {
     const [isOpened, setIsOpened] = useState(true);
-    console.log(data);
+    // console.log(data);
 
     return (
         <section className="items-section">
@@ -19,7 +24,13 @@ export default function ItemsSection({ data, title }) {
                     height={"32"}
                 />
             </div>
-            {isOpened && <Items data={data} />}
+            {isOpened && (
+                <Items
+                    data={data}
+                    selectedItems={selectedItems}
+                    setSelectedItems={setSelectedItems}
+                />
+            )}
         </section>
     );
 }

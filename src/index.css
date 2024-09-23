@@ -107,6 +107,10 @@ body {
 	background: #0E0D17;
 }
 
+.item--selected {
+	border: 2px solid #B5FF9B;
+}
+
 .item:hover {
 	cursor: pointer;
 }
