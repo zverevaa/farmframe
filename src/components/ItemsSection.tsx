@@ -2,12 +2,15 @@ import { TriangleDownIcon } from "@radix-ui/react-icons";
 import Items from "./Items";
 import { useState } from "react";
 import { TItem } from "../lib/types";
+import { useItemsStore } from "../stores/store";
+import Loading from "./Loading";
 type TItemSectionProps = {
     data: TItem[];
     title: string;
 };
 
 export default function ItemsSection({ data, title }: TItemSectionProps) {
+    const isLoading = useItemsStore((state) => state.isLoading);
     const [isOpened, setIsOpened] = useState(true);
     return (
         <section className="items-section">
@@ -22,7 +25,8 @@ export default function ItemsSection({ data, title }: TItemSectionProps) {
                     height={"32"}
                 />
             </div>
-            {isOpened && <Items data={data} />}
+            {isOpened && isLoading && <Loading />}
+            {isOpened && !isLoading && <Items data={data} />}
         </section>
     );
 }

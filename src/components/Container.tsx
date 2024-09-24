@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ItemsSection from "./ItemsSection";
 import ItemsView from "./ItemsView";
 import Search from "./Search";
@@ -6,16 +6,19 @@ import { ITEM_TYPES, SECTION_TITLES } from "../lib/constants.ts";
 import { useItemsStore } from "../stores/store.js";
 
 export default function Container() {
+    const fetchData = useItemsStore((state) => state.getData);
+    useEffect(() => {
+        fetchData();
+    }, [fetchData]);
     const [searchTerm, setSearchTerm] = useState("");
     const handleSearch = useItemsStore((state) => state.handleSearch);
     const filteredData = handleSearch(searchTerm);
+    const primeItems = useItemsStore((state) => state.primeItems);
 
     const filterData = (type: string[]) => {
+        if (!filteredData) return primeItems;
         return filteredData.filter(
-            (item) =>
-                item.name.includes("Prime") &&
-                type.includes(item.type) &&
-                item.components
+            (item) => type.includes(item.type) && item.components
         );
     };
 

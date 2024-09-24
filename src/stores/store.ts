@@ -18,37 +18,32 @@ export const useItemsStore = create<Store>((set, get) => ({
     items: [],
     primeItems: [],
     selectedItems: [],
-    isLoading: false,
+    isLoading: true,
     errorMessage: "",
     getData: async () => {
-        console.log("Loading");
-        set(() => ({ isLoading: true }));
-        const getData = async () => {
-            try {
-                const response = await fetch(
-                    "https://api.warframestat.us/items/"
-                );
-                if (!response.ok) {
-                    throw new Error();
-                }
-                const data = await response.json();
-                const filteredData = await data.filter(
-                    (item: TItem) =>
-                        ITEM_CATEGORIES.includes(item.category) &&
-                        item.name.includes("Prime") &&
-                        ITEM_TYPES.some((subArray) =>
-                            subArray.includes(item.type)
-                        ) &&
-                        item.components
-                );
-                set(() => ({ items: data }));
-                set(() => ({ primeItems: filteredData }));
-            } catch {
-                set(() => ({ errorMessage: "Something went wrong." }));
+        try {
+            const response = await fetch("https://api.warframestat.us/items/");
+            if (!response.ok) {
+                throw new Error();
             }
-            set(() => ({ isLoading: false }));
-        };
-        getData();
+            const data = await response.json();
+            const filteredData = await data.filter(
+                (item: TItem) =>
+                    ITEM_CATEGORIES.includes(item.category) &&
+                    item.name.includes("Prime") &&
+                    ITEM_TYPES.some((subArray) =>
+                        subArray.includes(item.type)
+                    ) &&
+                    item.components
+            );
+            set(() => ({
+                items: data,
+                primeItems: filteredData,
+                isLoading: false,
+            }));
+        } catch {
+            set(() => ({ errorMessage: "Something went wrong." }));
+        }
     },
     selectItem: (item: TItem) => {
         const state = get();

@@ -1,5 +1,4 @@
 import { TItem } from "../lib/types";
-import { useState } from "react";
 type TItemProps = {
     itemData: TItem;
     onClick: () => void;
@@ -11,7 +10,9 @@ export default function Item({ itemData, onClick, isSelected }: TItemProps) {
     return (
         <div
             onClick={onClick}
-            className={`item ${isSelected ? "item--selected" : ""}`}
+            className={`item item--rendered ${
+                isSelected ? "item--selected" : ""
+            }`}
         >
             <div className="item__container">
                 <img
