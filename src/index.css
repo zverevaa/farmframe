@@ -164,6 +164,13 @@ body {
     border-radius: 2px;
 }
 
+.item--bar {
+    aspect-ratio: 5.7/1;
+    width: calc(100% / 3 - (1rem * 2 / 3));
+    justify-content: end;
+    padding-right: 15px;
+}
+
 @keyframes rotate {
     100% {
         transform: rotate(1turn);
@@ -197,6 +204,10 @@ body {
     overflow: hidden;
 }
 
+.item__container--bar {
+    justify-items: center;
+}
+
 .item__container:hover > .item__name {
     background: linear-gradient(
         to bottom,
@@ -228,6 +239,11 @@ body {
         rgba(0, 2, 10, 0.8) 46%
     );
     user-select: none;
+}
+
+.item__name--bar {
+    position: static;
+    text-align: right;
 }
 
 /* Search */
