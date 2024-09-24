@@ -3,18 +3,14 @@ import { useState } from "react";
 type TItemProps = {
     itemData: TItem;
     onClick: () => void;
+    isSelected: boolean;
 };
 
-export default function Item({ itemData, onClick }: TItemProps) {
+export default function Item({ itemData, onClick, isSelected }: TItemProps) {
     const { name, imageName } = itemData;
-    const [isSelected, setIsSelected] = useState(false);
-
     return (
         <div
-            onClick={() => {
-                onClick();
-                setIsSelected((prev) => !prev);
-            }}
+            onClick={onClick}
             className={`item ${isSelected ? "item--selected" : ""}`}
         >
             <div className="item__container">
