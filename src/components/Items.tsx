@@ -1,14 +1,22 @@
+import { TItem } from "../lib/types";
+import { useItemsStore } from "../stores/store";
 import Item from "./Item";
 
-export default function Items({ data, selectedItems, setSelectedItems }) {
+type TItemsProps = {
+    data: TItem[];
+};
+
+export default function Items({ data }: TItemsProps) {
+    const setSelectedItems = useItemsStore((state) => state.selectItem);
+
+    const toggleSelected = (item: TItem) => {
+        setSelectedItems(item);
+    };
+
     return (
         <div className="items">
-            {data.map((item) => (
-                <Item
-                    itemData={item}
-                    setSelectedItems={setSelectedItems}
-                    onClick={() => setSelectedItems(item)}
-                />
+            {data.map((item: TItem) => (
+                <Item itemData={item} onClick={() => toggleSelected(item)} />
             ))}
         </div>
     );

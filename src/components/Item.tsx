@@ -1,15 +1,20 @@
+import { TItem } from "../lib/types";
 import { useState } from "react";
+type TItemProps = {
+    itemData: TItem;
+    onClick: () => void;
+};
 
-export default function Item({ itemData, setSelectedItems, onClick }) {
-    const { name, imageName, isSelected } = itemData;
+export default function Item({ itemData, onClick }: TItemProps) {
+    const { name, imageName } = itemData;
+    const [isSelected, setIsSelected] = useState(false);
 
-    const handleClick = () => {
-        itemData.isSelected = !isSelected;
-        onClick();
-    };
     return (
         <div
-            onClick={handleClick}
+            onClick={() => {
+                onClick();
+                setIsSelected((prev) => !prev);
+            }}
             className={`item ${isSelected ? "item--selected" : ""}`}
         >
             <div className="item__container">
