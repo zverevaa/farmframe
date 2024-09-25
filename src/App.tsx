@@ -1,11 +1,17 @@
 import Container from "./components/Container";
 import Header from "./components/Header";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
     return (
         <>
             <Header />
-            <Container />
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Container />} />
+                </Routes>
+                <Container />
+            </BrowserRouter>
         </>
     );
 }
