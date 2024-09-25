@@ -1,17 +1,18 @@
 import { TItem } from "../lib/types";
+import { useItemsStore } from "../stores/store";
 type TItemProps = {
     itemData: TItem;
     onClick: () => void;
     isSelected: boolean;
 };
 
-const viewType = "bar";
-
 export default function Item({ itemData, onClick, isSelected }: TItemProps) {
     const { name, imageName } = itemData;
+    const viewType = useItemsStore((state) => state.viewType);
+    // console.log("rerender");
     return (
         <>
-            {viewType === "horizontal" && (
+            {viewType === "grid" && (
                 <div
                     onClick={onClick}
                     className={`item item--rendered ${
@@ -30,7 +31,7 @@ export default function Item({ itemData, onClick, isSelected }: TItemProps) {
                     </div>
                 </div>
             )}
-            {viewType === "bar" && (
+            {viewType === "horizontal" && (
                 <div
                     onClick={onClick}
                     className={`item item--bar item--rendered ${

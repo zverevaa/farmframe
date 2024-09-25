@@ -9,9 +9,11 @@ type Store = {
     primeItems: TItem[];
     isLoading: boolean;
     errorMessage: string;
+    viewType: "grid" | "horizontal";
     getData: () => Promise<void>;
     selectItem: (item: TItem) => void;
     handleSearch: (searchTerm: string | null) => TItem[];
+    setViewType: (type: "grid" | "horizontal") => void;
 };
 
 export const useItemsStore = create<Store>((set, get) => ({
@@ -20,6 +22,7 @@ export const useItemsStore = create<Store>((set, get) => ({
     selectedItems: [],
     isLoading: true,
     errorMessage: "",
+    viewType: "grid",
     getData: async () => {
         try {
             const response = await fetch("https://api.warframestat.us/items/");
@@ -80,5 +83,14 @@ export const useItemsStore = create<Store>((set, get) => ({
             return newData;
         }
         return state.primeItems;
+    },
+    setViewType: (type: "grid" | "horizontal") => {
+        const state = get();
+        if (type === "grid") {
+            set(() => ({ viewType: "grid" }));
+        } else {
+            set(() => ({ viewType: "horizontal" }));
+        }
+        console.log(state.viewType);
     },
 }));

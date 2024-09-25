@@ -292,3 +292,14 @@ body {
 .search-form__button:hover {
     cursor: pointer;
 }
+
+/* View selection */
+
+.view-selection {
+    display: flex;
+    gap: 20px;
+}
+
+.view-selection__item:hover {
+    cursor: pointer;
+}
