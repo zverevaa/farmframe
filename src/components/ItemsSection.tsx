@@ -2,15 +2,18 @@ import { TriangleDownIcon } from "@radix-ui/react-icons";
 import Items from "./Items";
 import { useState } from "react";
 import { TItem } from "../lib/types";
-import { useItemsStore } from "../stores/store";
 import Loading from "./Loading";
 type TItemSectionProps = {
     data: TItem[];
     title: string;
+    isLoading: boolean;
 };
 
-export default function ItemsSection({ data, title }: TItemSectionProps) {
-    const isLoading = useItemsStore((state) => state.isLoading);
+export default function ItemsSection({
+    data,
+    title,
+    isLoading,
+}: TItemSectionProps) {
     const [isOpened, setIsOpened] = useState(true);
     return (
         <section className="items-section">

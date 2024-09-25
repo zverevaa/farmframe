@@ -14,6 +14,7 @@ type Store = {
     selectItem: (item: TItem) => void;
     handleSearch: (searchTerm: string | null) => TItem[];
     setViewType: (type: "grid" | "horizontal") => void;
+    filterData: (type: string[], filteredData: TItem[]) => TItem[];
 };
 
 export const useItemsStore = create<Store>((set, get) => ({
@@ -80,18 +81,20 @@ export const useItemsStore = create<Store>((set, get) => ({
             const newData = [...state.primeItems].filter((item) =>
                 item.name.toLowerCase().startsWith(searchTerm.toLowerCase())
             );
-            console.log("lemme see");
             return newData;
         }
         return state.primeItems;
     },
     setViewType: (type: "grid" | "horizontal") => {
-        const state = get();
         if (type === "grid") {
             set(() => ({ viewType: "grid" }));
         } else {
             set(() => ({ viewType: "horizontal" }));
         }
-        console.log(state.viewType);
+    },
+    filterData: (type: string[], filteredData: TItem[]) => {
+        return filteredData.filter(
+            (item) => type.includes(item.type) && item.components
+        );
     },
 }));

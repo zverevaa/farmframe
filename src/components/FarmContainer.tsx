@@ -5,14 +5,14 @@ export default function FarmContainer() {
     return (
         <div className="container">
             <div className="container__body">
-                {ITEM_TYPES.map((type, i) => {
+                {/* {ITEM_TYPES.map((type, i) => {
                     return (
                         <ItemsSection
                             title={SECTION_TITLES[i]}
                             data={filterData(type)}
                         />
                     );
-                })}
+                })} */}
             </div>
         </div>
     );

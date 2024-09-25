@@ -11,17 +11,10 @@ export default function Container() {
         fetchData();
     }, [fetchData]);
     const [searchTerm, setSearchTerm] = useState("");
+    const filterData = useItemsStore((state) => state.filterData);
     const handleSearch = useItemsStore((state) => state.handleSearch);
     const filteredData = handleSearch(searchTerm);
-    const primeItems = useItemsStore((state) => state.primeItems);
-
-    const filterData = (type: string[]) => {
-        if (!filteredData) return primeItems;
-        return filteredData.filter(
-            (item) => type.includes(item.type) && item.components
-        );
-    };
-    console.log(filteredData);
+    const isLoading = useItemsStore((state) => state.isLoading);
 
     return (
         <div className="container">
@@ -34,7 +27,10 @@ export default function Container() {
                     return (
                         <ItemsSection
                             title={SECTION_TITLES[i]}
-                            data={filterData(type)}
+                            data={
+                                !isLoading ? filterData(type, filteredData) : []
+                            }
+                            isLoading={isLoading}
                         />
                     );
                 })}
