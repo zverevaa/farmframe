@@ -191,6 +191,7 @@ body {
 
 .item:hover {
     cursor: pointer;
+    border-color: #f4e2ac;
 }
 
 .item__container {
@@ -244,6 +245,10 @@ body {
 .item__name--bar {
     position: static;
     text-align: right;
+    background: none;
+}
+.item__container--bar:hover > .item__name--bar {
+    background: none;
 }
 
 /* Search */
