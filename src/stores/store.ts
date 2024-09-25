@@ -56,6 +56,7 @@ export const useItemsStore = create<Store>((set, get) => ({
             imageName: item.imageName,
             category: item.category,
             components: item.components,
+            vaulted: item.vaulted,
             amount: 0,
         };
         const index = state.selectedItems.findIndex(

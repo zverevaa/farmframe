@@ -133,6 +133,10 @@ body {
     padding: 2px;
 }
 
+.item--vaulted {
+    background-color: #2e2226;
+}
+
 .item--loading::before {
     content: "";
     position: absolute;
@@ -176,18 +180,6 @@ body {
         transform: rotate(1turn);
     }
 }
-
-/* @keyframes loading {
-    0% {
-        background-color: rgb(14, 13, 23, 0.2);
-        border-color: rgb(101, 89, 59, 0.2);
-    }
-
-    100% {
-        background-color: rgb(14, 13, 23, 1);
-        border-color: rgb(101, 89, 59, 1);
-    }
-} */
 
 .item:hover {
     cursor: pointer;

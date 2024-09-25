@@ -3,6 +3,7 @@ export type TItem = {
     category: string;
     type: string;
     imageName: string;
+    vaulted: boolean;
     components: TPart[];
 };
 

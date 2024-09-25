@@ -21,6 +21,7 @@ export default function Container() {
             (item) => type.includes(item.type) && item.components
         );
     };
+    console.log(filteredData);
 
     return (
         <div className="container">

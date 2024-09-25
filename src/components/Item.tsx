@@ -7,7 +7,7 @@ type TItemProps = {
 };
 
 export default function Item({ itemData, onClick, isSelected }: TItemProps) {
-    const { name, imageName } = itemData;
+    const { name, imageName, vaulted } = itemData;
     const viewType = useItemsStore((state) => state.viewType);
     // console.log("rerender");
     return (
@@ -17,7 +17,7 @@ export default function Item({ itemData, onClick, isSelected }: TItemProps) {
                     onClick={onClick}
                     className={`item item--rendered ${
                         isSelected ? "item--selected" : ""
-                    }`}
+                    } ${vaulted ? "item--vaulted" : ""}`}
                 >
                     <div className="item__container">
                         <img
@@ -36,7 +36,7 @@ export default function Item({ itemData, onClick, isSelected }: TItemProps) {
                     onClick={onClick}
                     className={`item item--bar item--rendered ${
                         isSelected ? "item--selected" : ""
-                    }`}
+                    } ${vaulted ? "item--vaulted" : ""}`}
                 >
                     <div className="item__container item__container--bar">
                         <div className="item__name item__name--bar">
