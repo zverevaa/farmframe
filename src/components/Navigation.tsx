@@ -1,16 +1,18 @@
+import { Link } from "react-router-dom";
+
 export default function Navigation() {
     return (
         <nav className="header__menu">
             <ul className="header__list">
                 <li className="header__item">
-                    <a href="" className="header__link">
+                    <Link className="header__link" to={"/"}>
                         Items
-                    </a>
+                    </Link>
                 </li>
                 <li className="header__item">
-                    <a href="" className="header__link">
+                    <Link className="header__link" to={"/tracker"}>
                         Tracker
-                    </a>
+                    </Link>
                 </li>
             </ul>
         </nav>

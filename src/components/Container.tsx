@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ItemsSection from "./ItemsSection";
 import ItemsView from "./ItemsView";
 import Search from "./Search";
@@ -6,10 +6,6 @@ import { ITEM_TYPES, SECTION_TITLES } from "../lib/constants.ts";
 import { useItemsStore } from "../stores/store.js";
 
 export default function Container() {
-    const fetchData = useItemsStore((state) => state.getData);
-    useEffect(() => {
-        fetchData();
-    }, [fetchData]);
     const [searchTerm, setSearchTerm] = useState("");
     const filterData = useItemsStore((state) => state.filterData);
     const handleSearch = useItemsStore((state) => state.handleSearch);

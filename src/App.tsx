@@ -1,16 +1,20 @@
-import Container from "./components/Container";
-import FarmContainer from "./components/FarmContainer";
-import Header from "./components/Header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useItemsStore } from "./stores/store";
+import { useEffect } from "react";
+import Home from "./pages/Home";
+import Tracker from "./pages/Tracker";
 
 function App() {
+    const fetchData = useItemsStore((state) => state.getData);
+    useEffect(() => {
+        fetchData();
+    }, [fetchData]);
     return (
         <>
-            <Header />
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<Container />} />
-                    <Route path="farm" element={<FarmContainer />} />
+                    <Route path="/" element={<Home />} />
+                    <Route path="tracker" element={<Tracker />} />
                 </Routes>
             </BrowserRouter>
         </>
