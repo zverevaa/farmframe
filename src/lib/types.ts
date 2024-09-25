@@ -5,6 +5,7 @@ export type TItem = {
     imageName: string;
     vaulted: boolean;
     components: TPart[];
+    amount?: number;
 };
 
 export type TPart = {

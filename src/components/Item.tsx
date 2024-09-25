@@ -2,8 +2,8 @@ import { TItem } from "../lib/types";
 import { useItemsStore } from "../stores/store";
 type TItemProps = {
     itemData: TItem;
-    onClick: () => void;
-    isSelected: boolean;
+    onClick?: () => void;
+    isSelected?: boolean;
 };
 
 export default function Item({ itemData, onClick, isSelected }: TItemProps) {

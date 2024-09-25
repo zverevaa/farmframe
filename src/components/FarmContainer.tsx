@@ -19,6 +19,7 @@ export default function FarmContainer() {
                             title={SECTION_TITLES[i]}
                             data={filterData(type, selectedItems) || []}
                             isLoading={isLoading}
+                            sectionType="tracker"
                         />
                     );
                 })}

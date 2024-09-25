@@ -27,6 +27,7 @@ export default function Container() {
                                 !isLoading ? filterData(type, filteredData) : []
                             }
                             isLoading={isLoading}
+                            sectionType="items"
                         />
                     );
                 })}

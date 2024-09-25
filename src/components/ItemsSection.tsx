@@ -3,16 +3,19 @@ import Items from "./Items";
 import { useState } from "react";
 import { TItem } from "../lib/types";
 import Loading from "./Loading";
+import TrackerItems from "./TrackerItems";
 type TItemSectionProps = {
     data: TItem[];
     title: string;
     isLoading: boolean;
+    sectionType: "items" | "tracker";
 };
 
 export default function ItemsSection({
     data,
     title,
     isLoading,
+    sectionType,
 }: TItemSectionProps) {
     const [isOpened, setIsOpened] = useState(true);
     return (
@@ -29,7 +32,12 @@ export default function ItemsSection({
                 />
             </div>
             {isOpened && isLoading && <Loading />}
-            {isOpened && !isLoading && <Items data={data} />}
+            {isOpened && !isLoading && sectionType === "items" && (
+                <Items data={data} />
+            )}
+            {isOpened && !isLoading && sectionType === "tracker" && (
+                <TrackerItems data={data} />
+            )}
         </section>
     );
 }
