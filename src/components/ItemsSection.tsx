@@ -19,7 +19,11 @@ export default function ItemsSection({
 }: TItemSectionProps) {
     const [isOpened, setIsOpened] = useState(true);
     return (
-        <section className="items-section">
+        <section
+            className={`items-section ${
+                sectionType === "tracker" ? "tracker" : ""
+            }`}
+        >
             <div className="items-section__container">
                 <h2 className="items-section__title">{title.toUpperCase()}</h2>
                 <TriangleDownIcon
