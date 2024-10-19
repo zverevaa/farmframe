@@ -7,6 +7,7 @@ type TTrackerItemProps = {
 };
 
 export default function TrackerItem({ itemData }: TTrackerItemProps) {
+    console.log(itemData);
     return (
         <div className="tracker__item">
             <div className="tracker__item-info">

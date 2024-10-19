@@ -6,7 +6,7 @@ type TTrackerItemPart = {
 };
 
 export default function TrackerItemPart({ parts }: TTrackerItemPart) {
-    console.log(parts.drops);
+    // console.log(parts);
     return (
         <div className="tracker-item__part">
             <TrackerItemPartItem name={parts.name} />
@@ -29,6 +29,7 @@ export default function TrackerItemPart({ parts }: TTrackerItemPart) {
                                     /\s([^ ]+).*$/,
                                     " $1"
                                 )}
+                                part={part}
                             />
                         );
                     }

@@ -20,3 +20,18 @@ export type TDrop = {
 export type TSelectedItem = TItem & {
     amount: number;
 };
+
+export type TOwnedItem = {
+    name: string;
+    parts: TOwnedPart[];
+};
+
+export type TOwnedPart = {
+    name: string;
+    amount: number;
+};
+
+export type TOwnedRelic = {
+    location: string;
+    amount: number;
+};
